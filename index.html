@@ -8,9 +8,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Security Check (DevTools before load) -->
+  <!-- Security Check -->
   <script>
   (function() {
+    // Detect DevTools open before load
     function isDevToolsOpen() {
       const threshold = 160;
       return (
@@ -22,6 +23,13 @@
       document.documentElement.innerHTML = "";
       window.stop();
       window.location.replace("about:blank");
+    }
+
+    // Prevent direct access (force iframe embed only)
+    if (window.top === window.self) {
+      document.documentElement.innerHTML =
+        "<h2 style='color:white;text-align:center;margin-top:20%'>Embedding Required</h2>";
+      window.stop();
     }
   })();
   </script>
@@ -38,7 +46,7 @@
     <div id="hint">Click / Enter: Channels • Double Click / Double Enter: Fullscreen</div>
   </div>
 
-  <!-- JS -->
+  <!-- Player Logic -->
   <script src="player.js"></script>
 </body>
 </html>
