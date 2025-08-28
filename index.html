@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Juzt TV</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Security Check (DevTools before load) -->
+  <script>
+  (function() {
+    function isDevToolsOpen() {
+      const threshold = 160;
+      return (
+        window.outerWidth - window.innerWidth > threshold ||
+        window.outerHeight - window.innerHeight > threshold
+      );
+    }
+    if (isDevToolsOpen()) {
+      document.documentElement.innerHTML = "";
+      window.stop();
+      window.location.replace("about:blank");
+    }
+  })();
+  </script>
+
+  <!-- External Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.5/shaka-player.compiled.js"></script>
+</head>
+<body>
+  <div id="playerContainer">
+    <video id="videoPlayer" autoplay muted playsinline webkit-playsinline preload="metadata"></video>
+    <div id="overlay"></div>
+    <div id="sidebar"><ul id="channelList"></ul></div>
+    <div id="hint">Click / Enter: Channels • Double Click / Double Enter: Fullscreen</div>
+  </div>
+
+  <!-- JS -->
+  <script src="player.js"></script>
+</body>
+</html>

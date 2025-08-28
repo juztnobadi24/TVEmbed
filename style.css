@@ -1,0 +1,55 @@
+html, body {
+  margin:0; padding:0; width:100%; height:100%;
+  background:black; font-family:Arial,sans-serif;
+  overflow:hidden; touch-action:manipulation;
+  -webkit-user-select: none; -ms-user-select: none; user-select: none;
+}
+
+#playerContainer {
+  position:relative; width:100vw; height:100vh; background:black; overflow:hidden;
+}
+
+#videoPlayer {
+  position:absolute; top:50%; left:50%;
+  width:100%; height:100%; object-fit:contain;
+  transform:translate(-50%, -50%);
+}
+
+#overlay {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.5); opacity:0;
+  transition:opacity 0.4s; pointer-events:none; z-index:900;
+}
+#overlay.active { opacity:1; pointer-events:auto; }
+
+#sidebar {
+  position:absolute; top:0; left:0; width:25%; max-width:300px; height:100%;
+  background:rgba(20,20,20,0.95); overflow-y:auto; color:white; padding:10px;
+  box-shadow:2px 0 10px rgba(0,0,0,0.5);
+  transform:translateX(-100%); opacity:0; transition:transform 0.4s, opacity 0.4s;
+  z-index:1000;
+}
+#sidebar.open { transform:translateX(0); opacity:1; }
+
+#channelList { list-style:none; padding:0; margin:0; }
+#channelList li {
+  padding:12px 10px; cursor:pointer;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+#channelList li:hover { background: rgba(255,255,255,0.2); }
+#channelList li.highlight { background:#28a745; color:white; font-weight:600; }
+
+#hint {
+  position:absolute; bottom:10%; left:50%;
+  transform:translateX(-50%); color:white;
+  background:rgba(0,0,0,0.6); padding:10px 20px;
+  border-radius:8px; font-size:14px; opacity:1;
+  transition:opacity 1s;
+}
+#hint.fade { opacity:0; }
+
+body.hide-cursor { cursor:none; }
+
+@media (orientation: landscape){
+  #videoPlayer{width:100vw;height:100vh;top:0;left:0;transform:none;}
+}
