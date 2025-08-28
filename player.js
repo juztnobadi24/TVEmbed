@@ -1,6 +1,3 @@
-// ==========================
-// Player Variables
-// ==========================
 const container = document.getElementById("playerContainer");
 const video = document.getElementById("videoPlayer");
 const sidebar = document.getElementById("sidebar");
@@ -55,7 +52,7 @@ function highlightChannel(i){
 }
 
 // ==========================
-// Play Channel (Low Latency)
+// Play Channel
 // ==========================
 function playChannel(i){
   currentIndex=i;
