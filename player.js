@@ -1,27 +1,4 @@
 // ==========================
-// Security: Block Inspect / View Source
-// ==========================
-document.addEventListener("contextmenu", e => e.preventDefault());
-document.addEventListener("keydown", e => {
-  if (
-    (e.ctrlKey && e.key.toLowerCase() === "u") ||
-    (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") ||
-    (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "c") ||
-    (e.key === "F12") ||
-    (e.ctrlKey && e.key.toLowerCase() === "s")
-  ) {
-    e.preventDefault();
-    alert("This action is disabled!");
-    return false;
-  }
-});
-
-// Optional: force embed only
-if (window.top === window.self) {
-  document.body.innerHTML = "<h2 style='color:white;text-align:center;margin-top:20%'>Embedding required.</h2>";
-}
-
-// ==========================
 // Player Variables
 // ==========================
 const container = document.getElementById("playerContainer");
