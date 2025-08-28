@@ -4,14 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Juzt TV</title>
-
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Security Check -->
   <script>
   (function() {
-    // Detect DevTools open before load
+    // Detect DevTools before load
     function isDevToolsOpen() {
       const threshold = 160;
       return (
@@ -25,16 +22,16 @@
       window.location.replace("about:blank");
     }
 
-    // Prevent direct access (force iframe embed only)
+    // ✅ Allow iframe, block direct access
     if (window.top === window.self) {
-      document.documentElement.innerHTML =
-        "<h2 style='color:white;text-align:center;margin-top:20%'>Embedding Required</h2>";
-      window.stop();
+      document.addEventListener("DOMContentLoaded", () => {
+        document.body.innerHTML =
+          "<h2 style='color:white;text-align:center;margin-top:20%'>Embedding Required</h2>";
+      });
     }
   })();
   </script>
 
-  <!-- External Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.5/shaka-player.compiled.js"></script>
 </head>
@@ -46,7 +43,6 @@
     <div id="hint">Click / Enter: Channels • Double Click / Double Enter: Fullscreen</div>
   </div>
 
-  <!-- Player Logic -->
   <script src="player.js"></script>
 </body>
 </html>
